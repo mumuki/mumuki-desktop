@@ -4,32 +4,29 @@
 **Requires:** Vagrant & VirtualBox
 
 
-## Creating the VM (requires Internet):
+## Creating the VM (online):
 
-1) Change the `config` file with your needs.
-
-2) Download the base box:
 ```bash
-./base-box-download.sh
+# 1 - create the VM and all its dependencies:
+vagrant up
+
+# 2 - install the runners you want:
+./install-runner.sh mumuki/mumuki-hspec-server
+
+# 3 - package the VM:
+vagrant package --output mumuki.box
+cp mumuki.box dist/
 ```
 
-3) With the `virtualbox.box` file created, run `vagrant up` to create a VM with all the dependencies installed. Now with these files:
-
+## Installing the VM (offline):
 ```bash
-/.vagrant
-virtualbox.box
-./base-box-install.sh
-```
-
-you can run the VM in any place.
-
-# Installing the VM:
-```bash
-./base-box-install.sh
+cd dist/
+./mumuki-box-install.sh
 vagrant up
 ```
 
-# Start & Stop, Suspend & Resume the VM:
+### Vagrant commands
+#### Start & Stop, Suspend & Resume the VM:
 ```bash
 vagrant up
 vagrant halt
@@ -37,7 +34,7 @@ vagrant suspend
 vagrant resume
 ```
 
-# View the status
+#### View the status
 ```bash
 vagrant status
 ```
