@@ -1,17 +1,18 @@
 #!/bin/bash
 
 REPO="https://github.com/rodri042/mumuki-atheneum"
+cd
 
 # Install rvm
 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
 curl -sSL https://get.rvm.io | bash -s stable
-source /home/vagrant/.rvm/scripts/rvm
+. /home/vagrant/.rvm/scripts/rvm
 
 # Install ruby 2.0.0
 rvm install ruby-2.0.0-p481
 
-# Install bundle
-gem install bundle
+# Install bundler
+gem install bundler
 
 # Install postgresql
 sudo apt-get install -y postgresql libpq-dev
