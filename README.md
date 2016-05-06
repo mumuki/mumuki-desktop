@@ -9,20 +9,21 @@
 ```bash
 # 1 - create the VM and all its dependencies:
 vagrant up
+vagrant ssh -c "cd /vagrant ; ./install-atheneum.sh"
 
 # 2 - install the runners you want:
-./install-runner.sh mumuki/mumuki-hspec-server
+# //TODO
 
 # 3 - package the VM:
 vagrant package --output mumuki.box
-cp mumuki.box dist/
+mv mumuki.box dist/
 ```
 
 ## Installing the VM (offline):
 ```bash
 cd dist/
 ./mumuki-box-install.sh
-vagrant up
+./run.sh
 ```
 
 ### Vagrant commands
