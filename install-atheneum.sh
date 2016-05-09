@@ -4,13 +4,13 @@ REPO="https://github.com/rodri042/mumuki-atheneum"
 cd
 
 function try {
-    "$@"
-    local status=$?
-    if [ $status -ne 0 ]; then
-        echo "!!!Error!!! with $1" >&2
-        exit $?
-    fi
-    return $status
+  "$@"
+  local status=$?
+  if [ $status -ne 0 ]; then
+      echo "!!!Error!!! with $1" >&2
+      exit $?
+  fi
+  return $status
 }
 
 # Install rvm
@@ -44,7 +44,8 @@ cd mumuki-atheneum
 try bundle install
 
 # Monkey-patch the bootswatch's flatly theme to work offline
-(cd /vagrant/bootswatch-flatly-offline-fix && exec ./fix.sh)
+cd /vagrant/bootswatch-flatly-offline-fix && exec ./fix.sh
+try
 
 # Create and seed the db
 try rake db:create
