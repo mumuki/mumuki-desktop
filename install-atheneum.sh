@@ -33,6 +33,9 @@ cd mumuki-atheneum
 # Install atheneum dependencies
 bundle install
 
+# //TODO: Think something to avoid the @import of the file:
+# ~/.rvm/gems/ruby-2.0.0-p481/gems/bootswatch-rails-3.3.5/vendor/assets/stylesheets/bootswatch/flatly/_bootswatch.scss
+
 # Create and seed the db
 rake db:create
 rake db:migrate
