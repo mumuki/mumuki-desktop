@@ -77,5 +77,5 @@ end
 OptionParser.new do |opt|
   opt.on("--help") { show_help }
   opt.on("--install LANGUAGE") { |it| install it }
-  opt.on("--uninstall LASTNAME") { |it| uninstall it }
+  opt.on("--uninstall LANGUAGE") { |it| uninstall it }
 end.parse!
