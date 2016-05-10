@@ -29,8 +29,8 @@ try gem install bundler
 try sudo apt-get install -y postgresql libpq-dev
 
 # Create 'mumuki' user
-try echo "create role mumuki with createdb login password 'mumuki';" > create_role.sql
-try sudo -u postgres psql -a -f create_role.sql
+try echo "create role mumuki with createdb login password 'mumuki';" > /tmp/create_role.sql
+try sudo -u postgres psql -a -f /tmp/create_role.sql
 
 # Install git and clone the repo
 try sudo apt-get install -y git
@@ -44,7 +44,7 @@ cd mumuki-atheneum
 try bundle install
 
 # Monkey-patch the bootswatch's flatly theme to work offline
-cd /vagrant/bootswatch-flatly-offline-fix && exec ./fix.sh
+(cd /vagrant/bootswatch-flatly-offline-fix && exec ./fix.sh)
 try
 
 # Create and seed the db
