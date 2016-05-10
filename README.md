@@ -12,7 +12,8 @@ vagrant up
 vagrant ssh -c "cd /vagrant ; ./install-atheneum.sh"
 
 # 2 - install the runners you want:
-# //TODO
+./install-runner.rb --install gobstones
+./install-runner.rb --install haskell
 
 # 3 - package the VM:
 vagrant package --output mumuki.box
