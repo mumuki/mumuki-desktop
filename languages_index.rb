@@ -35,7 +35,7 @@ def add_language_to_index(language_name)
 end
 
 # Removes a language from the index
-def add_language_to_index(language_name)
+def remove_language_from_index(language_name)
   entry = $info["languages"].find { |it| it["name"] == language_name }
   $info["languages"].delete entry
   save

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require "optparse"
-load "repos.rb"
 load "languages_index.rb"
 load "languages_sql.rb"
 
@@ -10,18 +9,9 @@ INSTALL_SCRIPT = ".mumuki-offline/install.sh"
 # Installs a language on the machine
 # (it must exist in the database)
 def install(language_name)
-  get_languages { |languages|
-    language = languages.find { |it| it["name"] == language_name }
-    repo_url = repos[language_name]
-
+  get_language(language_name) { |language, repo_url|
     if is_installed language_name
       abort "The language '#{language_name} is already installed."
-    end
-    if language.nil?
-      abort "The language '#{language_name}' wasn't found. Did you run `rake db:seed`?"
-    end
-    if repo_url.nil?
-      abort "Missing repository url for '#{language_name}'."
     end
 
     puts "Installing '#{language_name}'..."
@@ -54,11 +44,31 @@ def install(language_name)
   }
 end
 
+# Uninstalls a language from the machine
+def uninstall(language_name)
+  get_language(language_name) { |language, repo_url|
+    if not is_installed language_name
+      abort "The language '#{language_name} is not installed yet."
+    end
+
+    puts "Uninstalling '#{language_name}'..."
+    success = system <<-EOF
+      cd
+      rm -rf #{language_name}
+    EOF
+    if not success then abort end
+
+    remove_language_from_index language_name
+
+    puts "The language '#{language_name}' was uninstalled!"
+  }
+end
+
 # Displays the help on stdout
 def show_help
   puts "Examples:"
-  puts "./install-runner.rb --install haskell"
-  puts "./install-runner.rb --remove gobstones"
+  puts "./install-runner.rb --install gobstones"
+  puts "./install-runner.rb --uninstall haskell"
   abort
 end
 
