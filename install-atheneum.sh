@@ -32,6 +32,9 @@ try sudo apt-get install -y postgresql libpq-dev
 try echo "create role mumuki with createdb login password 'mumuki';" > /tmp/create_role.sql
 try sudo -u postgres psql -a -f /tmp/create_role.sql
 
+# Copy the run.rb script that loads everything
+cp /vagrant/{languages_local.rb,run.rb,stop.rb} ~
+
 # Install git and clone the repo
 try sudo apt-get install -y git
 try git clone "$REPO"
