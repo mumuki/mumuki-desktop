@@ -4,7 +4,7 @@
 
 def repos
   {
-    "haskell" => "https://github.com/mumuki/mumuki-hspec-server",
+    "haskell" => "https://github.com/mumuki/mumuki-hspec-server2",
     "gobstones" => "https://github.com/mumuki/mumuki-gobstones-server",
     "javascript" => "https://github.com/mumuki/mumuki-mocha-server",
     "c" => "https://github.com/mumuki/mumuki-cspec-server",
