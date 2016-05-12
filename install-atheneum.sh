@@ -13,6 +13,10 @@ function try {
   return $status
 }
 
+# ----------------
+# Essentials
+# ----------------
+
 # Install rvm
 try curl -#LO https://rvm.io/mpapis.asc
 try gpg --import mpapis.asc
@@ -28,6 +32,17 @@ try gem install bundler
 # Install postgresql
 try sudo apt-get install -y postgresql libpq-dev
 
+# --------------
+# Extra software
+# --------------
+
+# Install docker
+try sudo apt-get install docker.io
+
+# ------------
+# Mumuki stuff
+# ------------
+
 # Create 'mumuki' user
 try echo "create role mumuki with createdb login password 'mumuki';" > /tmp/create_role.sql
 try sudo -u postgres psql -a -f /tmp/create_role.sql
@@ -39,9 +54,8 @@ cp /vagrant/{languages_local.rb,run.rb,stop.rb} ~
 try sudo apt-get install -y git
 try git clone "$REPO"
 
-# ----------------
 cd mumuki-atheneum
-# ----------------
+#  ^^^^^^^^^^^^^^^
 
 # Install atheneum dependencies
 try bundle install
