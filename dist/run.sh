@@ -1,4 +1,4 @@
 #!/bin/bash
 
 vagrant up
-vagrant ssh -c "cd ; ./run.rb"
+vagrant ssh -c "cd && exec ./run.rb"
