@@ -7,22 +7,28 @@
 ## Creating the VM (online):
 
 ```bash
-# 1 - create the VM and all its dependencies:
+# 1 - create the VM:
 vagrant up
-vagrant ssh -c "cd /vagrant ; ./install-atheneum.sh"
+vagrant ssh
 
-# 2 - install the runners you want:
-./install-runner.rb --install gobstones
-./install-runner.rb --install haskell
+  # (inside the vm)
+  cd /vagrant
 
-# 3 - package the VM:
+  # 2 - install atheneum
+  ./install-atheneum.sh
+
+  # 3 - install the runners you want:
+  ./install-runner.rb --install gobstones
+  ./install-runner.rb --install haskell
+
+# 4 - package the VM:
 vagrant package --output mumuki.box
 mv mumuki.box dist/
 ```
 
 ## Installing the VM (offline):
 ```bash
-cd dist/
+cd dist
 ./mumuki-box-install.sh
 ./run.sh
 ```
