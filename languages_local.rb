@@ -13,10 +13,6 @@ class LocalIndex
       rescue
         DEFAULT_INDEX
       end
-
-    if not @info["languages"].kind_of?(Array)
-      @info = DEFAULT_INDEX
-    end
   end
 
   # Returns if a language is installed or not
