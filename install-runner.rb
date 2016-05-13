@@ -22,18 +22,29 @@ def install(language_name)
 
     puts "Installing '#{language_name}'..."
     success = system <<-EOF
+      function ifFailed {
+        local status=$?
+        if [ $status -ne 0 ]; then
+          echo $1
+          cd
+          rm -rf #{language_name}
+          exit $status
+        fi
+      }
       cd
+
       git clone #{repo_url} #{language_name}
-      if [ $? -ne 0 ]; then
-        echo "Unable to clone the language repository!"
-        exit 1
-      fi
+      ifFailed "Unable to clone the language repository!"
 
       cd #{language_name}
       #{INSTALL_SCRIPT}
-      if [ $? -ne 0 ]; then
-        echo "The install command has exploded!"
-        exit 1
+      ifFailed "The install command has exploded!"
+
+      if [ -f escualo_install.sh ]; then
+        echo "Deploy script found! Running..."
+
+        bash escualo_install.sh
+        ifFailed "The deploy script has exploded!"
       fi
     EOF
     if not success then abort end
