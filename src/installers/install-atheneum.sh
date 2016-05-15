@@ -44,7 +44,7 @@ sudo ln -sf /bin/bash /bin/sh
 # --------------
 
 # Install docker
-try sudo apt-get install docker.io
+try sudo apt-get install -y docker.io
 sudo groupadd docker
 try sudo gpasswd -a ${USER} docker
 sudo service docker restart
