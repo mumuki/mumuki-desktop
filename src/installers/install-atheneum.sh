@@ -25,7 +25,7 @@ cd ~
 try curl -#LO https://rvm.io/mpapis.asc
 try gpg --import mpapis.asc
 try curl -sSL https://get.rvm.io | bash -s stable
-try . /home/vagrant/.rvm/scripts/rvm
+. /home/vagrant/.rvm/scripts/rvm
 
 # Install ruby 2.0.0
 try rvm install ruby-2.0.0-p481
