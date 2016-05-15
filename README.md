@@ -12,7 +12,7 @@ vagrant up
 vagrant ssh
 
   # (inside the vm)
-  cd /vagrant/src/installers
+  cd /vagrant/scripts/installers
 
   # 2 - install atheneum
   ./install-atheneum.sh
