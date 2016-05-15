@@ -1,17 +1,21 @@
 require "json"
 
 class LocalIndex
-  FILE_NAME = "#{ENV['HOME']}/installed-languages.json"
   INITIAL_PORT = 3000
-  DEFAULT_INDEX = { "languages" => [] }
   attr_reader :info
 
-  def initialize
+  def initialize(file_name)
+    @file_name = file_name
+    load!
+  end
+
+  # Loads the index from the file
+  def load!
     @info =
       begin
-        JSON.parse File.read(FILE_NAME)
+        JSON.parse File.read(@file_name)
       rescue
-        DEFAULT_INDEX
+        { "languages" => [] }
       end
   end
 
@@ -40,6 +44,6 @@ class LocalIndex
 
   # Save the changes in the file
   def save!
-    File.write FILE_NAME, JSON.generate(@info)
+    File.write @file_name, JSON.generate(@info)
   end
 end
