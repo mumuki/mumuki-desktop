@@ -97,5 +97,5 @@ OptionParser.new do |opt|
   opt.on("--help") { show_help }
   opt.on("--install LANGUAGE") { |it| install it }
   opt.on("--uninstall LANGUAGE") { |it| uninstall it }
-  opt.on("--update") { update }
+  opt.on("--update") { update ; puts "Index updated!" }
 end.parse!

@@ -1,8 +1,14 @@
 #!/bin/bash
 
 REPO="https://github.com/rodri042/mumuki-atheneum"
-cd
 
+# Copy the needed scripts
+cp /vagrant/{env.sh,languages_local.rb,start-atheneum.sh,run.rb,stop.rb} ~
+
+# Set environment variables
+. env.sh
+
+# try: it prints errors and exit
 function try {
   "$@"
   local status=$?
@@ -12,6 +18,9 @@ function try {
   fi
   return $status
 }
+
+cd ~
+#  ^
 
 # ----------
 # Essentials
@@ -33,7 +42,7 @@ try gem install bundler
 try sudo apt-get install -y postgresql libpq-dev
 
 # Replace dash with bash ¬.¬
-sudo ln -s -f /bin/bash /bin/sh
+sudo ln -sf /bin/bash /bin/sh
 
 # --------------
 # Extra software
@@ -53,9 +62,6 @@ sudo service docker restart
 try echo "create role mumuki with createdb login password 'mumuki';" > /tmp/create_role.sql
 try sudo -u postgres psql -a -f /tmp/create_role.sql
 
-# Copy the run.rb script that loads everything
-cp /vagrant/{languages_local.rb,run.rb,stop.rb} ~
-
 # Install git and clone the repo
 try sudo apt-get install -y git
 try git clone "$REPO"
@@ -71,6 +77,4 @@ try bundle install
 try
 
 # Create and seed the db
-try rake db:create
-try rake db:migrate
-try rake db:seed
+try rake db:create db:migrate db:seed

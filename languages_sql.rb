@@ -5,7 +5,7 @@ class SqlIndex
   def initialize
     @connection = PG.connect(
       host: "localhost",
-      dbname: "mumuki_development",
+      dbname: "mumuki",
       user: "mumuki",
       password: "mumuki"
     )
