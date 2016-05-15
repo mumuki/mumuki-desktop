@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "optparse"
-load "languages_local.rb"
+load "../languages_local.rb"
 load "languages_sql.rb"
 
 INSTALL_SCRIPT = <<-EOF
@@ -26,12 +26,12 @@ def install(language_name)
         local status=$?
         if [ $status -ne 0 ]; then
           echo $1
-          cd
+          cd ~
           rm -rf #{language_name}
           exit $status
         fi
       }
-      cd
+      cd ~
 
       git clone #{repo_url} #{language_name}
       ifFailed "Unable to clone the language repository!"
@@ -65,7 +65,7 @@ def uninstall(language_name)
 
     puts "Uninstalling '#{language_name}'..."
     success = system <<-EOF
-      cd
+      cd ~
       rm -rf #{language_name}
     EOF
     if not success then abort end

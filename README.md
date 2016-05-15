@@ -12,7 +12,7 @@ vagrant up
 vagrant ssh
 
   # (inside the vm)
-  cd /vagrant
+  cd /vagrant/src
 
   # 2 - install atheneum
   ./install-atheneum.sh
@@ -26,11 +26,10 @@ vagrant package --output mumuki.box
 mv mumuki.box dist/
 ```
 
-## Installing the VM (offline):
+## Installing the VM (offline @ linux):
 ```bash
 cd dist
-./mumuki-box-install.sh
-./run.sh
+./install-and-run.sh
 ```
 
 ### Vagrant commands

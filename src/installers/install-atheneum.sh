@@ -2,25 +2,20 @@
 
 REPO="https://github.com/rodri042/mumuki-atheneum"
 
-# Copy the needed scripts
-cp /vagrant/{env.sh,languages_local.rb,start-atheneum.sh,run.rb,stop.rb} ~
+cd ..
+#  ^^ scripts directory
 
 # Set environment variables
 . env.sh
 
-# try: it prints errors and exit
-function try {
-  "$@"
-  local status=$?
-  if [ $status -ne 0 ]; then
-      echo "!!!Error!!! with $1" >&2
-      exit $?
-  fi
-  return $status
-}
+# Import the `try` helper
+. ../dist/try.sh
+
+# Copy all these scripts to the machine
+try cp -r * ~
 
 cd ~
-#  ^
+#  ^ all is installed here
 
 # ----------
 # Essentials
