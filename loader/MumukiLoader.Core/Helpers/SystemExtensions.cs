@@ -3,9 +3,9 @@ using System.IO;
 using System.Reflection;
 using Microsoft.Win32;
 
-namespace MumukiLoader.Helpers
+namespace MumukiLoader.Core.Helpers
 {
-	internal static class SystemExtensions
+	public static class SystemExtensions
 	{
 		/// <summary>
 		/// Runs the command on command line with arguments. Returns the exit code.

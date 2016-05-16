@@ -31,8 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoaderForm));
 			this.lblPleaseWait = new System.Windows.Forms.Label();
 			this.lblState = new System.Windows.Forms.Label();
-			this.progressBar1 = new System.Windows.Forms.ProgressBar();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.prgProgress = new System.Windows.Forms.ProgressBar();
+			this.txtShell = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// lblPleaseWait
@@ -53,34 +53,33 @@
 			this.lblState.TabIndex = 1;
 			this.lblState.Text = "Cargando...";
 			// 
-			// progressBar1
+			// prgProgress
 			// 
-			this.progressBar1.Location = new System.Drawing.Point(15, 28);
-			this.progressBar1.Name = "progressBar1";
-			this.progressBar1.Size = new System.Drawing.Size(456, 23);
-			this.progressBar1.TabIndex = 2;
+			this.prgProgress.Location = new System.Drawing.Point(15, 28);
+			this.prgProgress.Name = "prgProgress";
+			this.prgProgress.Size = new System.Drawing.Size(456, 23);
+			this.prgProgress.TabIndex = 2;
 			// 
-			// textBox1
+			// txtShell
 			// 
-			this.textBox1.BackColor = System.Drawing.Color.Black;
-			this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.textBox1.Enabled = false;
-			this.textBox1.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.textBox1.ForeColor = System.Drawing.Color.LightGray;
-			this.textBox1.Location = new System.Drawing.Point(16, 74);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(455, 132);
-			this.textBox1.TabIndex = 3;
-			this.textBox1.Text = "Installing virtualbox";
+			this.txtShell.BackColor = System.Drawing.Color.Black;
+			this.txtShell.BorderStyle = System.Windows.Forms.BorderStyle.None;
+			this.txtShell.Enabled = false;
+			this.txtShell.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.txtShell.ForeColor = System.Drawing.Color.LightGray;
+			this.txtShell.Location = new System.Drawing.Point(16, 74);
+			this.txtShell.Multiline = true;
+			this.txtShell.Name = "txtShell";
+			this.txtShell.Size = new System.Drawing.Size(455, 132);
+			this.txtShell.TabIndex = 3;
 			// 
 			// LoaderForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(486, 218);
-			this.Controls.Add(this.textBox1);
-			this.Controls.Add(this.progressBar1);
+			this.Controls.Add(this.txtShell);
+			this.Controls.Add(this.prgProgress);
 			this.Controls.Add(this.lblState);
 			this.Controls.Add(this.lblPleaseWait);
 			this.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -91,7 +90,8 @@
 			this.Name = "LoaderForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Mumuki";
-			this.Load += new System.EventHandler(this.LoaderForm_Load);
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.LoaderForm_FormClosing);
+			this.Shown += new System.EventHandler(this.LoaderForm_Shown);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -101,8 +101,8 @@
 
 		private System.Windows.Forms.Label lblPleaseWait;
 		private System.Windows.Forms.Label lblState;
-		private System.Windows.Forms.ProgressBar progressBar1;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.ProgressBar prgProgress;
+		private System.Windows.Forms.TextBox txtShell;
 	}
 }
 
