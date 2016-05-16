@@ -12,6 +12,7 @@ namespace MumukiLoader.Core.Helpers
 		/// </summary>
 		public static int RunAsWin32(this string self, string arguments)
 		{
+			// TODO: Is === to RunAsCommand
 			var process = new Process
 			{
 				StartInfo = new ProcessStartInfo
@@ -47,13 +48,6 @@ namespace MumukiLoader.Core.Helpers
 
 			process.Start();
 			process.WaitForExit();
-
-			// FOR COMMAND LINE:
-			//while (!process.StandardOutput.EndOfStream)
-			//{
-			//	string line = process.StandardOutput.ReadLine();
-			//	// do something with line
-			//}
 
 			return process.ExitCode;
 		}
