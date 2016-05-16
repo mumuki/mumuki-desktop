@@ -46,6 +46,7 @@
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Steps\Step.cs" />
+    <Compile Include="Steps\GitBashInstallStep.cs" />
     <Compile Include="Steps\VirtualBoxInstallStep.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -9,7 +9,7 @@ namespace MumukiLoader.Core.Steps
 
 		protected override int run()
 		{
-			return "install-virtualbox.msi".RunOnCommandLine("/qb");
+			return "install-virtualbox.msi".RunAsWin32("/qb");
 		}
 	}
 }

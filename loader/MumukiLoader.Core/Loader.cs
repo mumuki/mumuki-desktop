@@ -8,7 +8,8 @@ namespace MumukiLoader.Core
 	{
 		private readonly IEnumerable<Step> steps = new List<Step>
 		{
-			new VirtualBoxInstallStep()
+			new VirtualBoxInstallStep(),
+			new GitBashInstallStep()
 		};
 
 		/// <summary>

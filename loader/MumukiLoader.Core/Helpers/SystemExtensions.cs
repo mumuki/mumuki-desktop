@@ -8,9 +8,9 @@ namespace MumukiLoader.Core.Helpers
 	public static class SystemExtensions
 	{
 		/// <summary>
-		/// Runs the command on command line with arguments. Returns the exit code.
+		/// Runs the command as a Win32 application. Returns the exit code.
 		/// </summary>
-		public static int RunOnCommandLine(this string self, string arguments)
+		public static int RunAsWin32(this string self, string arguments)
 		{
 			var process = new Process
 			{
@@ -22,10 +22,33 @@ namespace MumukiLoader.Core.Helpers
 					Arguments = arguments
 				}
 			};
-			process.Start();
 
+			process.Start();
 			process.WaitForExit();
-			// or
+
+			return process.ExitCode;
+		}
+
+		/// <summary>
+		/// Runs the command on the command line. Returns the exit code.
+		/// </summary>
+		public static int RunAsCommand(this string self)
+		{
+			var process = new Process
+			{
+				StartInfo = new ProcessStartInfo
+				{
+					WindowStyle = ProcessWindowStyle.Hidden,
+					WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+					FileName = "cmd.exe",
+					Arguments = $"/C {self}"
+				}
+			};
+
+			process.Start();
+			process.WaitForExit();
+
+			// FOR COMMAND LINE:
 			//while (!process.StandardOutput.EndOfStream)
 			//{
 			//	string line = process.StandardOutput.ReadLine();
