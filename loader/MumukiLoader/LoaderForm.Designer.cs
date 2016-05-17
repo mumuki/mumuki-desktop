@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoaderForm));
 			this.lblPleaseWait = new System.Windows.Forms.Label();
 			this.lblState = new System.Windows.Forms.Label();
-			this.prgProgress = new System.Windows.Forms.ProgressBar();
 			this.txtShell = new System.Windows.Forms.TextBox();
+			this.prgProgress = new System.Windows.Forms.ProgressBar();
+			this.tmrFakeProgress = new System.Windows.Forms.Timer(this.components);
 			this.SuspendLayout();
 			// 
 			// lblPleaseWait
@@ -51,13 +53,6 @@
 			this.lblState.Size = new System.Drawing.Size(458, 17);
 			this.lblState.TabIndex = 1;
 			// 
-			// prgProgress
-			// 
-			this.prgProgress.Location = new System.Drawing.Point(15, 28);
-			this.prgProgress.Name = "prgProgress";
-			this.prgProgress.Size = new System.Drawing.Size(456, 23);
-			this.prgProgress.TabIndex = 2;
-			// 
 			// txtShell
 			// 
 			this.txtShell.BackColor = System.Drawing.Color.Black;
@@ -68,8 +63,22 @@
 			this.txtShell.Multiline = true;
 			this.txtShell.Name = "txtShell";
 			this.txtShell.ReadOnly = true;
+			this.txtShell.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
 			this.txtShell.Size = new System.Drawing.Size(455, 132);
 			this.txtShell.TabIndex = 3;
+			this.txtShell.TextChanged += new System.EventHandler(this.txtShell_TextChanged);
+			// 
+			// prgProgress
+			// 
+			this.prgProgress.Location = new System.Drawing.Point(15, 28);
+			this.prgProgress.Name = "prgProgress";
+			this.prgProgress.Size = new System.Drawing.Size(456, 23);
+			this.prgProgress.TabIndex = 2;
+			// 
+			// tmrFakeProgress
+			// 
+			this.tmrFakeProgress.Enabled = true;
+			this.tmrFakeProgress.Tick += new System.EventHandler(this.tmrFakeProgress_Tick);
 			// 
 			// LoaderForm
 			// 
@@ -99,8 +108,9 @@
 
 		private System.Windows.Forms.Label lblPleaseWait;
 		private System.Windows.Forms.Label lblState;
-		private System.Windows.Forms.ProgressBar prgProgress;
 		private System.Windows.Forms.TextBox txtShell;
+		private System.Windows.Forms.ProgressBar prgProgress;
+		private System.Windows.Forms.Timer tmrFakeProgress;
 	}
 }
 

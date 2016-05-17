@@ -22,5 +22,16 @@ namespace MumukiLoader {
 		private void LoaderForm_FormClosing(object sender, FormClosingEventArgs e) {
 			if (!loaded) e.Cancel = true;
 		}
+
+		private void txtShell_TextChanged(object sender, System.EventArgs e) {
+			txtShell.SelectionStart = txtShell.Text.Length;
+			txtShell.ScrollToCaret();
+		}
+
+		private void tmrFakeProgress_Tick(object sender, System.EventArgs e) {
+			prgProgress.Value += 1;
+			if (prgProgress.Value >= prgProgress.Maximum)
+				prgProgress.Value = 0;
+		}
 	}
 }
