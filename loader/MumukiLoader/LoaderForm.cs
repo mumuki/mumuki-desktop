@@ -16,7 +16,7 @@ namespace MumukiLoader {
 
 			var result = await new Loader(new TextBoxLogger(this.txtShell)).LoadAll();
 			tweakUiFor(result);
-
+			if (result == Result.Success) Application.Exit();
 		}
 
 		private void LoaderForm_FormClosing(object sender, FormClosingEventArgs e) {
