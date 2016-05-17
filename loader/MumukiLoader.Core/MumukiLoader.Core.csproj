@@ -45,10 +45,13 @@
     <Compile Include="Loader.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Steps\VagrantInstallStep.cs" />
+    <Compile Include="Steps\RunAlwaysStep.cs" />
+    <Compile Include="Steps\RunOnceStep.cs" />
+    <Compile Include="Steps\Tasks\VagrantUpStep.cs" />
+    <Compile Include="Steps\Tasks\VagrantInstallStep.cs" />
     <Compile Include="Steps\Step.cs" />
-    <Compile Include="Steps\OpenSshInstallStep.cs" />
-    <Compile Include="Steps\VirtualBoxInstallStep.cs" />
+    <Compile Include="Steps\Tasks\OpenSshInstallStep.cs" />
+    <Compile Include="Steps\Tasks\VirtualBoxInstallStep.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

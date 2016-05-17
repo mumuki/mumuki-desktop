@@ -64,12 +64,12 @@
 			// 
 			this.txtShell.BackColor = System.Drawing.Color.Black;
 			this.txtShell.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.txtShell.Enabled = false;
 			this.txtShell.Font = new System.Drawing.Font("Lucida Console", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.txtShell.ForeColor = System.Drawing.Color.LightGray;
 			this.txtShell.Location = new System.Drawing.Point(16, 74);
 			this.txtShell.Multiline = true;
 			this.txtShell.Name = "txtShell";
+			this.txtShell.ReadOnly = true;
 			this.txtShell.Size = new System.Drawing.Size(455, 132);
 			this.txtShell.TabIndex = 3;
 			// 

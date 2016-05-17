@@ -6,7 +6,8 @@ namespace MumukiLoader.Core.Steps
 	public abstract class Step
 	{
 		public abstract string Name { get; }
-		public abstract bool ShouldRun { get; }
+		public virtual bool ShouldRun => true;
+		private const int RESTART_NEEDED = 3010;
 
 		/// <summary>
 		/// Runs the step and returns a success flag.
@@ -16,7 +17,7 @@ namespace MumukiLoader.Core.Steps
 			int exitCode;
 			try
 			{
-				exitCode = this.run();
+				exitCode = this.run(log);
 			}
 			catch (Win32Exception e)
 			{
@@ -25,11 +26,20 @@ namespace MumukiLoader.Core.Steps
 			}
 			
 			if (exitCode != 0)
-				log.AddLine($"The step finished with an abnormal exit code: {exitCode}");
+				log.AddLine(exitCode == RESTART_NEEDED
+					? "The program needs to restart the system..."
+					: $"The step finished with an abnormal exit code: {exitCode}"
+				);
 
 			return exitCode == 0;
 		}
 
-		protected abstract int run();
+		/// <summary>
+		/// Checks after run, if the step still needs to run.
+		/// </summary>
+		/// <returns></returns>
+		public abstract bool ItWorked();
+
+		protected abstract int run(Logger log);
 	}
 }

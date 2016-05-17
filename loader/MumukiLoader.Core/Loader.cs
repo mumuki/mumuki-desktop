@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using MumukiLoader.Core.Helpers;
 using MumukiLoader.Core.Steps;
+using MumukiLoader.Core.Steps.Tasks;
 
 namespace MumukiLoader.Core
 {
@@ -11,7 +12,8 @@ namespace MumukiLoader.Core
 		{
 			new VirtualBoxInstallStep(),
 			new OpenSshInstallStep(),
-			new VagrantInstallStep()
+			new VagrantInstallStep(),
+			new VagrantUpStep()
 		};
 
 		public Loader(Logger log) { this.log = log; }
@@ -27,13 +29,13 @@ namespace MumukiLoader.Core
 				{
 					log.AddLine($"=> Running task '{step.Name}'...");
 					var success = step.Run(log);
-					var itStillNeedsRun = step.ShouldRun;
+					var itWorked = step.ItWorked();
 
-					logStepStatus(step, success && !itStillNeedsRun ? "SUCCESS" : "ERROR");
-					if (success & itStillNeedsRun)
+					logStepStatus(step, success && itWorked ? "SUCCESS" : "ERROR");
+					if (success & !itWorked)
 						log.AddLine("=> Seems like after running, the task still needs to run. The load can't continue.");
 
-					if (!success || itStillNeedsRun) return false;
+					if (!success || !itWorked) return false;
 				}
 				else
 				{

@@ -35,22 +35,20 @@ namespace MumukiLoader.Core.Helpers
 		/// </summary>
 		public static int RunAsCommand(this string self)
 		{
-			var process = new Process
-			{
-				StartInfo = new ProcessStartInfo
-				{
-					CreateNoWindow = true,
-					UseShellExecute = false,
-					RedirectStandardOutput = true,
-					WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-					FileName = "cmd.exe",
-					Arguments = $"/C {self}"
-				}
-			};
-
-			process.Start();
+			var process = startCommand(self);
 			process.WaitForExit();
+			return process.ExitCode;
+		}
 
+		/// <summary>
+		/// Runs the command on the command line and logs the stdout. Returns the exit code.
+		/// </summary>
+		public static int RunAsCommand(this string self, Logger log)
+		{
+			var process = startCommand(self);
+			while (!process.StandardOutput.EndOfStream)
+				log.AddLine(process.StandardOutput.ReadLine());
+			process.WaitForExit();
 			return process.ExitCode;
 		}
 
@@ -61,6 +59,24 @@ namespace MumukiLoader.Core.Helpers
 		{
 			using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
 				return hklm.OpenSubKey(self) != null;
+		}
+
+		private static Process startCommand(string command)
+		{
+			var process = new Process
+			{
+				StartInfo = new ProcessStartInfo
+				{
+					CreateNoWindow = true,
+					UseShellExecute = false,
+					RedirectStandardOutput = true,
+					WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
+					FileName = "cmd.exe",
+					Arguments = $"/C {command}"
+				}
+			};
+			process.Start();
+			return process;
 		}
 	}
 }
