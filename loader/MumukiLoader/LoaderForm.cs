@@ -15,8 +15,8 @@ namespace MumukiLoader {
 			lblState.Text = Locales.ValueFor("Loading");
 
 			var result = await new Loader(new TextBoxLogger(this.txtShell)).LoadAll();
-			lblState.Text = Locales.ValueFor(result.ToStatusString());
-			loaded = true;
+			tweakUiFor(result);
+
 		}
 
 		private void LoaderForm_FormClosing(object sender, FormClosingEventArgs e) {
@@ -32,6 +32,14 @@ namespace MumukiLoader {
 			prgProgress.Value += 1;
 			if (prgProgress.Value >= prgProgress.Maximum)
 				prgProgress.Value = 0;
+		}
+
+		private void tweakUiFor(Result result)
+		{
+			lblState.Text = Locales.ValueFor(result.ToStatusString());
+			loaded = true;
+			prgProgress.Value = 100;
+			tmrFakeProgress.Enabled = false;
 		}
 	}
 }
