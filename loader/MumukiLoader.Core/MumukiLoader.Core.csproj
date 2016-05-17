@@ -48,6 +48,7 @@
     <Compile Include="Steps\RunAlwaysStep.cs" />
     <Compile Include="Steps\RunOnceStep.cs" />
     <Compile Include="Steps\Result.cs" />
+    <Compile Include="Steps\Tasks\ChromeAppStartStep.cs" />
     <Compile Include="Steps\Tasks\ServerStartStep.cs" />
     <Compile Include="Steps\Tasks\VagrantUpStep.cs" />
     <Compile Include="Steps\Tasks\VagrantInstallStep.cs" />

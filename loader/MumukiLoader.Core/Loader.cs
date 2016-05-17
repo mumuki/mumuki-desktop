@@ -13,7 +13,8 @@ namespace MumukiLoader.Core {
 			new OpenSshInstallStep(),
 			new VagrantInstallStep(),
 			new VagrantUpStep(),
-			new ServerStartStep()
+			new ServerStartStep(),
+			new ChromeAppStart()
 		};
 
 		public Loader(Logger log) { this.log = log; }
