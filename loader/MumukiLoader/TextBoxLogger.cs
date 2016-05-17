@@ -11,7 +11,9 @@ namespace MumukiLoader {
 
 		public string Text {
 			get { return this.textBox.Text; }
-			set { this.textBox.Text = value; }
+			set {
+				textBox.Invoke(new MethodInvoker(delegate { textBox.Text = value; }));
+			}
 		}
 	}
 }

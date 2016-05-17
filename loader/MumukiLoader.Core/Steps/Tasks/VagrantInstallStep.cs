@@ -1,12 +1,13 @@
-﻿using MumukiLoader.Core.Helpers;
+﻿using System.Threading.Tasks;
+using MumukiLoader.Core.Helpers;
 
 namespace MumukiLoader.Core.Steps.Tasks {
 	public class VagrantInstallStep : RunOnceStep {
 		public override string Name => "Install Vagrant";
 		public override bool ShouldRun => "where vagrant".RunAsCommand() != 0;
 
-		protected override int run(Logger log) {
-			return "install-vagrant.msi".RunAsWin32("/qb /norestart");
+		protected override async Task<int> run(Logger log) {
+			return await "install-vagrant.msi".RunAsWin32("/qb /norestart");
 		}
 	}
 }

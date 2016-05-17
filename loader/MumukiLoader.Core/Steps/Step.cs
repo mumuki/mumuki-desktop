@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Threading.Tasks;
 using MumukiLoader.Core.Helpers;
 
 namespace MumukiLoader.Core.Steps {
@@ -10,10 +11,10 @@ namespace MumukiLoader.Core.Steps {
 		/// <summary>
 		/// Runs the step and returns a result.
 		/// </summary>
-		public Result Run(Logger log) {
+		public async Task<Result> Run(Logger log) {
 			int exitCode;
 			try {
-				exitCode = this.run(log);
+				exitCode = await this.run(log);
 			} catch (Win32Exception e) {
 				log.AddLine($"The step finished with a win32 error: {e.Message}");
 				return Result.Error;
@@ -37,6 +38,6 @@ namespace MumukiLoader.Core.Steps {
 
 		protected abstract bool itWorked();
 
-		protected abstract int run(Logger log);
+		protected abstract Task<int> run(Logger log);
 	}
 }

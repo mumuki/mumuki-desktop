@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using MumukiLoader.Core.Helpers;
 using MumukiLoader.Core.Steps;
 using MumukiLoader.Core.Steps.Tasks;
@@ -19,11 +20,11 @@ namespace MumukiLoader.Core {
 		/// <summary>
 		/// Loads (and install if needed) all the software needed to load Mumuki. Returns a success flag.
 		/// </summary>
-		public Result LoadAll() {
+		public async Task<Result> LoadAll() {
 			foreach (var step in this.steps) {
 				if (step.ShouldRun) {
 					log.AddLine($"=> Running task '{step.Name}'...");
-					var result = step.Run(log);
+					var result = await step.Run(log);
 
 					logStepStatus(step, result.ToStatusString());
 					if (result != Result.Success) return result;

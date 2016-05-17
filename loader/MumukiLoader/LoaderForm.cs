@@ -10,11 +10,11 @@ namespace MumukiLoader {
 			InitializeComponent();
 		}
 
-		private void LoaderForm_Shown(object sender, System.EventArgs e) {
+		private async void LoaderForm_Shown(object sender, System.EventArgs e) {
 			lblPleaseWait.Text = Locales.ValueFor("PreparingThings");
 			lblState.Text = Locales.ValueFor("Loading");
 
-			var result = new Loader(new TextBoxLogger(this.txtShell)).LoadAll();
+			var result = await new Loader(new TextBoxLogger(this.txtShell)).LoadAll();
 			lblState.Text = Locales.ValueFor(result.ToStatusString());
 			loaded = true;
 		}

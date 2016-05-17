@@ -2,7 +2,7 @@
 
 namespace MumukiLoader {
 	public static class Locales {
-		private static IDictionary<string, string> locales = new Dictionary<string, string> {
+		private static readonly IDictionary<string, string> locales = new Dictionary<string, string> {
 			{ "PreparingThings", "Estamos preparando algunas cosas, esperá un momento por favor..." },
 			{ "Loading", "Cargando..." },
 			{ "SUCCESS", "¡Perfecto!" },
