@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Microsoft.Win32;
 
@@ -12,7 +13,6 @@ namespace MumukiLoader.Core.Helpers
 		/// </summary>
 		public static int RunAsWin32(this string self, string arguments)
 		{
-			// TODO: Is === to RunAsCommand
 			var process = new Process
 			{
 				StartInfo = new ProcessStartInfo
@@ -39,7 +39,8 @@ namespace MumukiLoader.Core.Helpers
 			{
 				StartInfo = new ProcessStartInfo
 				{
-					WindowStyle = ProcessWindowStyle.Hidden,
+					UseShellExecute = false,
+					RedirectStandardOutput = true,
 					WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
 					FileName = "cmd.exe",
 					Arguments = $"/C {self}"

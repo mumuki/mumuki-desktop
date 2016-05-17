@@ -9,7 +9,7 @@ namespace MumukiLoader.Core.Steps
 
 		protected override int run()
 		{
-			return "install-openssh.exe /clientonly=1 /S".RunAsCommand();
+			return "install-openssh.exe".RunAsWin32("/clientonly=1 /S");
 		}
 	}
 }
