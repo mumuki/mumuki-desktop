@@ -41,9 +41,8 @@
 			this.lblPleaseWait.Font = new System.Drawing.Font("Verdana", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblPleaseWait.Location = new System.Drawing.Point(12, 9);
 			this.lblPleaseWait.Name = "lblPleaseWait";
-			this.lblPleaseWait.Size = new System.Drawing.Size(458, 16);
+			this.lblPleaseWait.Size = new System.Drawing.Size(0, 16);
 			this.lblPleaseWait.TabIndex = 0;
-			this.lblPleaseWait.Text = "Estamos preparando algunas cosas, esperá un momento por favor...";
 			// 
 			// lblState
 			// 
@@ -51,7 +50,6 @@
 			this.lblState.Name = "lblState";
 			this.lblState.Size = new System.Drawing.Size(458, 17);
 			this.lblState.TabIndex = 1;
-			this.lblState.Text = "Cargando...";
 			// 
 			// prgProgress
 			// 

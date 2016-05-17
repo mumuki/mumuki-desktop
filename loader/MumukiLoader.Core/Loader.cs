@@ -3,10 +3,8 @@ using MumukiLoader.Core.Helpers;
 using MumukiLoader.Core.Steps;
 using MumukiLoader.Core.Steps.Tasks;
 
-namespace MumukiLoader.Core
-{
-	public class Loader
-	{
+namespace MumukiLoader.Core {
+	public class Loader {
 		private readonly Logger log;
 		private readonly IEnumerable<Step> steps = new List<Step>
 		{
@@ -21,36 +19,23 @@ namespace MumukiLoader.Core
 		/// <summary>
 		/// Loads (and install if needed) all the software needed to load Mumuki. Returns a success flag.
 		/// </summary>
-		public bool LoadAll()
-		{
-			foreach (var step in this.steps)
-			{
-				if (step.ShouldRun)
-				{
+		public Result LoadAll() {
+			foreach (var step in this.steps) {
+				if (step.ShouldRun) {
 					log.AddLine($"=> Running task '{step.Name}'...");
-					var success = step.Run(log);
-					var itWorked = step.ItWorked();
+					var result = step.Run(log);
 
-					logStepStatus(step, success && itWorked ? "SUCCESS" : "ERROR");
-					if (success & !itWorked)
-						log.AddLine("=> Seems like after running, the task still needs to run. The load can't continue.");
-
-					if (!success || !itWorked) return false;
-				}
-				else
-				{
+					logStepStatus(step, result.ToStatusString());
+					if (result != Result.Success) return result;
+				} else {
 					logStepStatus(step, "NOT NEEDED");
 				}
 			}
 
-			return true;
+			return Result.Success;
 		}
 
-		/// <summary>
-		/// Logs the result of a task.
-		/// </summary>
-		private void logStepStatus(Step step, string status)
-		{
+		private void logStepStatus(Step step, string status) {
 			log.AddLine($"Task: '{step.Name}': {status}");
 		}
 	}

@@ -1,7 +1,5 @@
-﻿namespace MumukiLoader.Core
-{
-	public interface Logger
-	{
+﻿namespace MumukiLoader.Core {
+	public interface Logger {
 		string Text { get; set; }
 	}
 }

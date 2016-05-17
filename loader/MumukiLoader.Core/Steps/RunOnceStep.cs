@@ -1,7 +1,5 @@
-﻿namespace MumukiLoader.Core.Steps
-{
-	public abstract class RunOnceStep : Step
-	{
-		public override bool ItWorked() { return !ShouldRun; }
+﻿namespace MumukiLoader.Core.Steps {
+	public abstract class RunOnceStep : Step {
+		protected override bool itWorked() { return !ShouldRun; }
 	}
 }
