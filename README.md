@@ -8,7 +8,7 @@
 
 ```bash
 # 1 - create the VM:
-vagrant up
+vagrant up --no-provision
 vagrant ssh
 
   # (inside the vm)

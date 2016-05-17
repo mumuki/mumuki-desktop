@@ -6,7 +6,7 @@ namespace MumukiLoader.Core.Steps.Tasks {
 		public override string Name => "Vagrant up";
 
 		protected override async Task<int> run(Logger log) {
-			return await "vagrant up".RunAsCommand(log);
+			return await "vagrant up --no-provision".RunAsCommand(log);
 		}
 	}
 }

@@ -9,4 +9,9 @@ Vagrant.configure(2) do |config|
   config.vm.provider "virtualbox" do |vb|
     vb.memory = "2048"
   end
+
+  config.vm.provision "shell",
+    name: "Start server",
+    inline: 'cd /home/vagrant && ./stop.sh && ./run.rb',
+    privileged: false
 end
