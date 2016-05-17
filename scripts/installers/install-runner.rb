@@ -22,7 +22,7 @@ def install(language_name)
 
     puts "Installing '#{language_name}'..."
     success = system <<-EOF
-      function ifFailed {
+      ifFailed () {
         local status=$?
         if [ $status -ne 0 ]; then
           echo $1

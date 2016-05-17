@@ -36,9 +36,6 @@ try gem install bundler
 # Install postgresql
 try sudo apt-get install -y postgresql libpq-dev
 
-# Replace dash with bash ¬.¬
-sudo ln -sf /bin/bash /bin/sh
-
 # --------------
 # Extra software
 # --------------
