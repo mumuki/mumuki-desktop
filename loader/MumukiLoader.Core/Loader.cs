@@ -12,7 +12,8 @@ namespace MumukiLoader.Core {
 			new VirtualBoxInstallStep(),
 			new OpenSshInstallStep(),
 			new VagrantInstallStep(),
-			new VagrantUpStep()
+			new VagrantUpStep(),
+			new ServerStartStep()
 		};
 
 		public Loader(Logger log) { this.log = log; }
