@@ -14,7 +14,7 @@ namespace MumukiLoader
 
 		private void LoaderForm_Shown(object sender, System.EventArgs e)
 		{
-			new Loader().LoadAll(new TextBoxLogger(this.txtShell));
+			new Loader(new TextBoxLogger(this.txtShell)).LoadAll();
 			this.loaded = true;
 		}
 

@@ -1,4 +1,5 @@
-﻿using MumukiLoader.Core.Helpers;
+﻿using System.ComponentModel;
+using MumukiLoader.Core.Helpers;
 
 namespace MumukiLoader.Core.Steps
 {
@@ -12,8 +13,17 @@ namespace MumukiLoader.Core.Steps
 		/// </summary>
 		public bool Run(Logger log)
 		{
-			var exitCode = this.run();
-
+			int exitCode;
+			try
+			{
+				exitCode = this.run();
+			}
+			catch (Win32Exception e)
+			{
+				log.AddLine($"The step finished with a win32 error: {e.Message}");
+				return false;
+			}
+			
 			if (exitCode != 0)
 				log.AddLine($"The step finished with an abnormal exit code: {exitCode}");
 

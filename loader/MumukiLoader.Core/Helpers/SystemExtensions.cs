@@ -1,6 +1,6 @@
-﻿using System.Diagnostics;
+﻿using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using Microsoft.Win32;
 
@@ -39,6 +39,7 @@ namespace MumukiLoader.Core.Helpers
 			{
 				StartInfo = new ProcessStartInfo
 				{
+					CreateNoWindow = true,
 					UseShellExecute = false,
 					RedirectStandardOutput = true,
 					WorkingDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
