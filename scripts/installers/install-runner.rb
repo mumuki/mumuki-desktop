@@ -9,7 +9,7 @@ INSTALL_SCRIPT = <<-EOF
   bundle install
 EOF
 
-$local = LocalIndex.new("#{ENV['HOME']}/installed-languages.json")
+$local = LocalIndex.new
 $sql = SqlIndex.new
 
 # Installs a language on the machine

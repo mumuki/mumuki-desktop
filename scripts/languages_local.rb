@@ -4,7 +4,7 @@ class LocalIndex
   INITIAL_PORT = 3000
   attr_reader :info
 
-  def initialize(file_name)
+  def initialize(file_name = "#{ENV['HOME']}/installed-languages.json")
     @file_name = file_name
     load!
   end

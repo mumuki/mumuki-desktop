@@ -1,6 +1,7 @@
 # // TODO: This should be in Thesaurus
 #    and the `languages` table after
 #    running the `rake db:seed` command.
+#    https://github.com/mumuki/mumukit/issues/33
 
 def repos
   {
