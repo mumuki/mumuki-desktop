@@ -17,17 +17,16 @@ vagrant ssh
   # 2 - install atheneum
   ./install-atheneum.sh
 
-  # restart with `vagrant reload --no-provision`
+  exit
+
+vagrant ssh # again (to reload environment stuff)
+
+  # (inside the vm)
+  cd /vagrant/scripts/installers
 
   # 3 - install the runners you want:
   ./install-runner.rb --install gobstones
   ./install-runner.rb --install haskell
-
-  # 4 - run in development once
-  cd ~/mumuki-atheneum
-  rake db:create db:migrate db:seed
-  OFFLINE_MODE=true RAILS_ENV=development rails s
-  rake db:drop
 
 # 4 - package the VM:
 vagrant package --output mumuki.box

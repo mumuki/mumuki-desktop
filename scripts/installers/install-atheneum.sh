@@ -36,7 +36,7 @@ try gem install bundler
 # Install postgresql
 try sudo apt-get install -y postgresql libpq-dev
 
-# Replace dash with bash ¬.¬
+# Replace dash with bash
 sudo ln -sf /bin/bash /bin/sh
 
 # --------------
@@ -70,6 +70,15 @@ try bundle install
 # Monkey-patch the bootswatch's flatly theme to work offline
 (cd /vagrant/bootswatch-flatly-offline-fix && exec ./fix.sh)
 try
+
+# Open the server once in development mode
+# Because the black magic, if we don't do this, production mode it won't work
+# Trust me (?)
+echo "Don't open the server yet..."
+(OFFLINE_MODE=true RAILS_ENV=development rails s) &
+last_pid=$!
+sleep 10
+kill -SIGKILL $last_pid
 
 # Create and seed the db
 try rake db:create db:migrate db:seed
