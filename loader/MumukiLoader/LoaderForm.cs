@@ -1,5 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
+using IWshRuntimeLibrary;
 using MumukiLoader.Core;
 using MumukiLoader.Core.Steps;
 
@@ -16,6 +19,7 @@ namespace MumukiLoader {
 			lblPleaseWait.Text = Locales.ValueFor("PreparingThings");
 			lblState.Text = Locales.ValueFor("Loading");
 
+			this.createSelfShortcutOnDesktop();
 			var result = await new Loader(new TextBoxLogger(this.txtShell)).LoadAll();
 			tweakUiFor(result);
 			if (result == Result.Success) Application.Exit();
@@ -42,6 +46,21 @@ namespace MumukiLoader {
 			this.loaded = true;
 			prgProgress.Value = 100;
 			tmrFakeProgress.Enabled = false;
+		}
+
+		private void createSelfShortcutOnDesktop() {
+			const string DESCRIPTION = "Mumuki";
+			var shortcutLocation = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), $"{DESCRIPTION}.lnk");
+			var shortcutTarget = Assembly.GetExecutingAssembly().Location;
+			var shortcutFolder = Path.GetDirectoryName(shortcutTarget);
+			var shell = new WshShell();
+
+			var shortcut = (IWshShortcut)shell.CreateShortcut(shortcutLocation);
+			shortcut.TargetPath = shortcutTarget;
+			shortcut.WorkingDirectory = shortcutFolder;
+			shortcut.Description = DESCRIPTION;
+			shortcut.IconLocation = $@"{shortcutFolder}\logo.ico";
+			shortcut.Save();
 		}
 	}
 }
