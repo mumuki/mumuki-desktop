@@ -20,11 +20,14 @@ wait_port = <<-EOF
   }
 EOF
 
-system '(cd ~ && exec ./start-atheneum.sh) &'
+# nohup ./script.sh 0<&- &>/dev/null &
+# detaches the stdin from the script and therefore ignores the hang signal that vagrant sends when provisioning is complete
+
+system '(cd ~ && nohup ./start-atheneum.sh 0<&- &>/dev/null) &'
 LocalIndex.new.info["languages"].each do |language|
   system <<-EOF
     #{wait_port}
-    (cd ~/#{language["name"]} && exec bundle exec rackup -p#{language["port"]}) &
+    (cd ~/#{language["name"]} && (nohup bundle exec rackup -p#{language["port"]} 0<&- &>/dev/null)) &
 
     wait_30_seconds_for #{language["port"]}
     echo ">>>>> Runner #{language["name"]} started!"
