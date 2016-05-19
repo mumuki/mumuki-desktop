@@ -25,13 +25,13 @@ namespace MumukiLoader.Core {
 		public async Task<Result> LoadAll() {
 			foreach (var step in this.steps) {
 				if (step.ShouldRun) {
-					log.AddLine($"=> Running task '{step.Name}'...");
-					var result = await step.Run(log);
+					this.log.AddLine($"=> Running task '{step.Name}'...");
+					var result = await step.Run(this.log);
 
-					logStepStatus(step, result.ToStatusString());
+					this.logStepStatus(step, result.ToStatusString());
 					if (result != Result.Success) return result;
 				} else {
-					logStepStatus(step, "NOT NEEDED");
+					this.logStepStatus(step, "NOT NEEDED");
 				}
 			}
 
@@ -39,7 +39,7 @@ namespace MumukiLoader.Core {
 		}
 
 		private void logStepStatus(Step step, string status) {
-			log.AddLine($"Task: '{step.Name}': {status}");
+			this.log.AddLine($"Task: '{step.Name}': {status}");
 		}
 	}
 }

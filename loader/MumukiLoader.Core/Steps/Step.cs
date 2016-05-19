@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using MumukiLoader.Core.Helpers;
 
@@ -6,7 +7,7 @@ namespace MumukiLoader.Core.Steps {
 	public abstract class Step {
 		public abstract string Name { get; }
 		public virtual bool ShouldRun => true;
-		private const int RESTART_NEEDED = 3010;
+		protected const int RESTART_NEEDED = 3010;
 
 		/// <summary>
 		/// Runs the step and returns a result.
@@ -15,6 +16,7 @@ namespace MumukiLoader.Core.Steps {
 			int exitCode;
 			try {
 				exitCode = await this.run(log);
+				this.reloadPath();
 			} catch (Win32Exception e) {
 				log.AddLine($"The step finished with a win32 error: {e.Message}");
 				return Result.Error;
@@ -36,8 +38,13 @@ namespace MumukiLoader.Core.Steps {
 			}
 		}
 
-		protected abstract bool itWorked();
+		protected void reloadPath() {
+			var path = @"SYSTEM\CurrentControlSet\Control\Session Manager\Environment".GetValueInRegistry("PATH");
+			Environment.SetEnvironmentVariable("PATH", path, EnvironmentVariableTarget.Process);
+		}
 
 		protected abstract Task<int> run(Logger log);
+
+		protected abstract bool itWorked();
 	}
 }

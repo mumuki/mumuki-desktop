@@ -12,7 +12,7 @@ namespace MumukiLoader {
 		public string Text {
 			get { return this.textBox.Text; }
 			set {
-				textBox.Invoke(new MethodInvoker(delegate { textBox.Text = value; }));
+				this.textBox.Invoke(new MethodInvoker(delegate { textBox.Text = value; }));
 			}
 		}
 	}

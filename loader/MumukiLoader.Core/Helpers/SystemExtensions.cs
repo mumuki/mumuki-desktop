@@ -55,8 +55,22 @@ namespace MumukiLoader.Core.Helpers {
 		/// Determine if the key exists in the Registry.
 		/// </summary>
 		public static bool ExistsInRegistry(this string self) {
+			return self.AsKeyInRegistry() != null;
+		}
+
+		/// <summary>
+		/// Returns the a key in the Registry.
+		/// </summary>
+		public static string GetValueInRegistry(this string self, string valueName) {
+			return (string) self.AsKeyInRegistry().GetValue(valueName);
+		}
+
+		/// <summary>
+		/// Returns the a key in the Registry.
+		/// </summary>
+		public static RegistryKey AsKeyInRegistry(this string self) {
 			using (var hklm = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64))
-				return hklm.OpenSubKey(self) != null;
+				return hklm.OpenSubKey(self);
 		}
 
 		private static Process startCommand(string command) {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MumukiLoader.Core.Helpers {
+﻿namespace MumukiLoader.Core.Helpers {
 	public static class LoggerExtensions {
 		/// <summary>
 		/// Adds a line to the logger.

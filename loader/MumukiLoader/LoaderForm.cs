@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using MumukiLoader.Core;
 using MumukiLoader.Core.Steps;
 
@@ -10,7 +11,8 @@ namespace MumukiLoader {
 			InitializeComponent();
 		}
 
-		private async void LoaderForm_Shown(object sender, System.EventArgs e) {
+		private async void LoaderForm_Shown(object sender, EventArgs e)
+		{
 			lblPleaseWait.Text = Locales.ValueFor("PreparingThings");
 			lblState.Text = Locales.ValueFor("Loading");
 
@@ -20,15 +22,15 @@ namespace MumukiLoader {
 		}
 
 		private void LoaderForm_FormClosing(object sender, FormClosingEventArgs e) {
-			if (!loaded) e.Cancel = true;
+			if (!this.loaded) e.Cancel = true;
 		}
 
-		private void txtShell_TextChanged(object sender, System.EventArgs e) {
+		private void txtShell_TextChanged(object sender, EventArgs e) {
 			txtShell.SelectionStart = txtShell.Text.Length;
 			txtShell.ScrollToCaret();
 		}
 
-		private void tmrFakeProgress_Tick(object sender, System.EventArgs e) {
+		private void tmrFakeProgress_Tick(object sender, EventArgs e) {
 			prgProgress.Value += 1;
 			if (prgProgress.Value >= prgProgress.Maximum)
 				prgProgress.Value = 0;
@@ -37,7 +39,7 @@ namespace MumukiLoader {
 		private void tweakUiFor(Result result)
 		{
 			lblState.Text = Locales.ValueFor(result.ToStatusString());
-			loaded = true;
+			this.loaded = true;
 			prgProgress.Value = 100;
 			tmrFakeProgress.Enabled = false;
 		}
