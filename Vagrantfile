@@ -10,8 +10,9 @@ Vagrant.configure(2) do |config|
     vb.memory = "2048"
   end
 
+  timeout_for_updates = 10 # max time to wait for internet connection
   config.vm.provision "shell",
     name: "Update and start",
-    inline: 'cd /home/vagrant && ./stop.sh && ./update .rb && ./run.rb',
+    inline: "cd /home/vagrant && ./stop.sh && ./update.rb #{timeout_for_updates} && ./run.rb",
     privileged: false
 end
