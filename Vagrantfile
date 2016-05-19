@@ -11,7 +11,7 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.provision "shell",
-    name: "Start server",
-    inline: 'cd /home/vagrant && ./stop.sh && ./run.rb',
+    name: "Update and start",
+    inline: 'cd /home/vagrant && ./stop.sh && ./update .rb && ./run.rb',
     privileged: false
 end

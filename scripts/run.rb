@@ -20,8 +20,13 @@ wait_port = <<-EOF
   }
 EOF
 
-# nohup ./script.sh 0<&- &>/dev/null &
-# detaches the stdin from the script and therefore ignores the hang signal that vagrant sends when provisioning is complete
+# ------------------------------------ #
+# nohup ./script.sh 0<&- &>/dev/null & #
+# => detaches the stdin from the       #
+#    script and therefore ignores the  #
+#    hang signal that vagrant sends    #
+#    when provisioning is complete.    #
+# ------------------------------------ #
 
 system '(cd ~ && nohup ./start-atheneum.sh 0<&- &>/dev/null) &'
 LocalIndex.new.info["languages"].each do |language|
