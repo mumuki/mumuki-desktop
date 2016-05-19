@@ -50,6 +50,7 @@
     <Compile Include="Steps\Result.cs" />
     <Compile Include="Steps\Tasks\ChromeAppStartStep.cs" />
     <Compile Include="Steps\Tasks\ServerStartStep.cs" />
+    <Compile Include="Steps\Tasks\MumukiBoxInstallStep.cs" />
     <Compile Include="Steps\Tasks\VagrantUpStep.cs" />
     <Compile Include="Steps\Tasks\VagrantInstallStep.cs" />
     <Compile Include="Steps\Step.cs" />

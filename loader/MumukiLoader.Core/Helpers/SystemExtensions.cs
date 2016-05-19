@@ -52,6 +52,14 @@ namespace MumukiLoader.Core.Helpers {
 		}
 
 		/// <summary>
+		/// Runs the command on the command line and returns the stdout.
+		/// </summary>
+		public static string RunAsCommandAndGetOutput(this string self) {
+			var process = startCommand(self);
+			return process.StandardOutput.ReadToEnd();
+		}
+
+		/// <summary>
 		/// Determine if the key exists in the Registry.
 		/// </summary>
 		public static bool ExistsInRegistry(this string self) {
