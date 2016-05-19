@@ -1,6 +1,6 @@
 #!/bin/bash
 
-REPO="https://github.com/rodri042/mumuki-atheneum"
+REPO="https://github.com/mumuki/mumuki-atheneum"
 
 cd ..
 #  ^^ scripts directory

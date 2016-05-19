@@ -1,0 +1,6 @@
+thenameofthevbfilename.exe -extract (or --extract)
+You'll get a message telling you where it was extracted. Usually:
+
+C:\Documents And Settings\Your Profile Name\Local Settings\Temp\VirtualBox
+
+You'll have to unhide the system files to find that folder. You will find a common.zip file and 2 .msi files, one for 32bit one for 64bit. Save whichever architecture you have plus the common.zip file.

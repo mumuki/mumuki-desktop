@@ -3,8 +3,9 @@ Vagrant.configure(2) do |config|
   config.vm.box_check_update = false
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
+  timeout_for_updates = 10
   config.vm.provision "shell",
-    name: "Start server",
-    inline: 'cd /home/vagrant && ./stop.sh && ./run.rb',
+    name: "Update and start",
+    inline: "cd /home/vagrant && ./stop.sh && ./update.rb #{timeout_for_updates} && ./run.rb",
     privileged: false
 end

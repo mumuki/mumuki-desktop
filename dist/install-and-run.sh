@@ -2,8 +2,8 @@
 
 . try.sh
 
-try sudo dpkg -i vagrant-1.8.deb virtualbox-5.deb
+try sudo dpkg -i install-vagrant.deb install-virtualbox.deb
 try sudo /etc/init.d/vboxdrv setup
 
 ./mumuki-box-install.sh
-./run.sh
+vagrant up
