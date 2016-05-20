@@ -71,14 +71,5 @@ try bundle install
 (cd /vagrant/bootswatch-flatly-offline-fix && exec ./fix.sh)
 try
 
-# Open the server once in development mode
-# Because the black magic, if we don't do this, production mode it won't work
-# Trust me (?)
-echo "Don't open the server yet..."
-(OFFLINE_MODE=true RAILS_ENV=development rails s) &
-last_pid=$!
-sleep 10
-kill -SIGKILL $last_pid
-
 # Create and seed the db
 try rake db:create db:migrate db:seed
