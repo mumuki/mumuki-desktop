@@ -62,5 +62,5 @@ if doIHaveInternet
 
   puts "Update finished."
 else
-  puts "No internet connection detected! Updated canceled."
+  puts "No internet connection detected! Update canceled."
 end
