@@ -33,22 +33,16 @@ vagrant package --output mumuki.box
 mv mumuki.box dist/
 ```
 
-## Installing the VM (offline @ linux):
+## Installing the VM (offline):
+
+### Debian:
+
 ```bash
 cd dist
 ./install-and-run.sh
 ```
 
-### Vagrant commands
-#### Start & Stop, Suspend & Resume the VM:
+### Windows:
 ```bash
-vagrant up
-vagrant halt
-vagrant suspend
-vagrant resume
-```
-
-#### View the status
-```bash
-vagrant status
+Double click @ MumukiLoader.exe
 ```
