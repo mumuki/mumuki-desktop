@@ -10,10 +10,10 @@ EOF
 
 if doIHaveInternet
   puts "Updating atheneo..."
-  system 'cd ~/mumuki-atheneum && exec git pull && exec rake db:seed'
+  system 'cd ~/mumuki-atheneum && . ../env.sh && git pull && bundle install && rake db:migrate db:seed'
   LocalIndex.new.info["languages"].each do |language|
     puts "Updating language #{language['name']}..."
-    system "cd ~/#{language['name']} && exec git pull"
+    system "cd ~/#{language['name']} && git pull && bundle install"
   end
   puts "Update finished."
 else
