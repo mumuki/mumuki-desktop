@@ -3,7 +3,7 @@ using MumukiLoader.Core.Helpers;
 
 namespace MumukiLoader.Core.Steps.Tasks {
 	public class MumukiBoxInstallStep : RunOnceStep {
-		private const string BOX_NAME = "alpha";
+		private const string BOX_NAME = "mumuki";
 
 		public override string Name => "Install mumuki.box";
 
