@@ -7,7 +7,7 @@ namespace MumukiLoader.Core.Steps.Tasks {
 		public override bool ShouldRun => !@"Software\Microsoft\Windows\CurrentVersion\App Paths\chrome.exe".ExistsInRegistry();
 
 		protected override async Task<int> run(Logger log) {
-			return await "install-chrome.exe".RunAsWin32("/silent /install");
+			return await "install-chrome.msi".RunAsWin32("/qb");
 		}
 	}
 }
