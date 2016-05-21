@@ -12,6 +12,7 @@ namespace MumukiLoader.Core {
 			new VirtualBoxInstallStep(),
 			new OpenSshInstallStep(),
 			new VagrantInstallStep(),
+			new ChromeInstallStep(),
 			new MumukiBoxInstallStep(),
 			new VagrantUpStep(),
 			new ServerStartStep(),
