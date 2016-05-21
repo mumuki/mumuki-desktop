@@ -28,6 +28,7 @@ EOF
 #    when provisioning is complete.    #
 # ------------------------------------ #
 
+system '(cd ~/installers && ./install-runner.rb --update)'
 system '(cd ~ && nohup ./start-atheneum.sh 0<&- &>/dev/null) &'
 LocalIndex.new.info["languages"].each do |language|
   system <<-EOF
