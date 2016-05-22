@@ -3,12 +3,13 @@
 . try.sh
 
 function installIfNeeded {
-  name = $1
-  install = $2
-
-  if ! [ $(where "$name") ]; then
+  local name=$1
+  local install=$2
+  
+  which "$name"
+  if [[ $? -ne 0 ]]; then
     echo "Install $name: INSTALLING"
-    "$@"
+    "$2"
   else
     echo "Install $name: NOTNEEDED"
   fi
@@ -23,14 +24,9 @@ function installVagrant {
   try sudo dpkg -i install-vagrant.deb
 }
 
-function installChrome {
-  try sudo dpkg -i install-chrome.deb
-}
-
 # Install software
-installIfNeeded "virtualbox", installVirtualBox
-installIfNeeded "vagrant", installVagrant
-installIfNeeded "google-chrome", installChrome
+installIfNeeded "virtualbox" installVirtualBox
+installIfNeeded "vagrant" installVagrant
 
 # Install the box
 boxes=`vagrant box list`
@@ -41,5 +37,6 @@ else
   ./mumuki-box-install.sh
 fi
 
-try vagrant up
-try google-chrome --app="http://localhost:3000"
+try vagrant up --no-provision
+try vagrant provision
+try firefox --url="http://localhost:3000"
