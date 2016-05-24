@@ -19,7 +19,7 @@ describe LocalIndex do
       save_and_check '{"languages":[]}'
     end
 
-    it "can adds languages and return the port" do
+    it "can add languages and return the port" do
       cobol_port = index.add_language! "cobol"
       cobol_port.must_equal 3001
       save_and_check '{"languages":[{"name":"cobol","port":3001}]}'
