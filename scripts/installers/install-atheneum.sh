@@ -73,3 +73,6 @@ try
 
 # Create and seed the db
 try rake db:create db:migrate db:seed
+
+# Compile the assets
+try rake assets:precompile
