@@ -39,6 +39,7 @@ if doIHaveInternet
       git pull
       bundle install
       rake db:migrate db:seed
+      rake assets:precompile
     else
       echo "No need to update."
     fi
@@ -54,7 +55,6 @@ if doIHaveInternet
       if needPull; then
         git pull
         bundle install
-        rake assets:precompile
       else
         echo "No need to update."
       fi
