@@ -54,6 +54,7 @@ if doIHaveInternet
       if needPull; then
         git pull
         bundle install
+        rake assets:precompile
       else
         echo "No need to update."
       fi
