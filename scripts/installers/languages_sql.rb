@@ -33,7 +33,7 @@ class SqlIndex
   # Updates the url of the runners with its assigned ports
   def update_languages_table(info)
     info["languages"].each do |language|
-      @connection.exec "update languages set test_runner_url='http://localhost:#{language['port']}' where name = '#{language['name']}'"
+      @connection.exec "update languages set runner_url='http://localhost:#{language['port']}' where name = '#{language['name']}'"
     end
   end
 end
