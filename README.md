@@ -1,7 +1,7 @@
 # mumuki-offline
 
 
-**Requires:** Vagrant & VirtualBox
+**Requires:** Vagrant (1.8+) & VirtualBox
 
 
 ## Creating the VM (online):
