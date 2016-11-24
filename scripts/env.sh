@@ -11,6 +11,7 @@ export LC_TELEPHONE=en_US.UTF-8
 export LC_MEASUREMENT=en_US.UTF-8
 export LC_IDENTIFICATION=en_US.UTF-8
 
+export COOKIES_DOMAIN=localhost
 export OFFLINE_MODE=true
 export QUEUELESS_MODE=true
 export RAILS_ENV=production
