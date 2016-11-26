@@ -1,6 +1,6 @@
 # Mumuki Desktop
 
-This repository contains the scripts and assets needed to install a Desktop, Standalone version of Mumuki. It runs inside a virtual machine, so [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) should be installed on the target machine.
+This repository contains the scripts and assets needed to install a Desktop, Standalone version of Mumuki Platform. It runs inside a virtual machine, so [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) should be installed on the target machine.
 
 ## Creating the virtual machine
 
