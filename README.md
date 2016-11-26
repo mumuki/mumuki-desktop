@@ -1,10 +1,10 @@
-# mumuki-offline
+# Mumuki Desktop
 
-This repository contains the scripts and assets needed to install a standalone version of Mumuki. It runs inside a virtual machine, so [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) should be installed on the target machine.
+This repository contains the scripts and assets needed to install a Desktop, Standalone version of Mumuki. It runs inside a virtual machine, so [Vagrant](https://www.vagrantup.com/downloads.html) and [VirtualBox](https://www.virtualbox.org/wiki/Downloads) should be installed on the target machine.
 
 ## Creating the virtual machine
 
-Before installing Mumuki offline, you need to generate the virtual machine with the language runners you want (they can be modified afterwards). For this step, you will need a stable internet connection, because many heavy things are downloaded.
+Before installing Mumuki Desktop, you need to generate the virtual machine with the language runners you want (they can be modified afterwards). For this step, you will need a stable internet connection, because many heavy things are downloaded.
 
 Follow these steps to create the box:
 
